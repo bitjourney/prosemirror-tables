@@ -1,5 +1,5 @@
 {
-  "name": "prosemirror-tables",
+  "name": "@bitjourney/prosemirror-tables",
   "version": "1.2.0",
   "description": "ProseMirror's rowspan/colspan tables component",
   "main": "dist/index.js",
