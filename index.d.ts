@@ -190,6 +190,12 @@ export function mergeCells(
   dispatch?: (tr: Transaction) => void,
 ): boolean;
 
+export function removeRow(
+  tr: Transaction,
+  rect: TableRect,
+  row: number,
+): void;
+
 export function deleteRow(
   state: EditorState,
   dispatch?: (tr: Transaction) => void,
@@ -218,6 +224,12 @@ export function addRow(
   rect: TableRect,
   row: number,
 ): Transaction;
+
+export function removeColumn(
+  tr: Transaction,
+  rect: TableRect,
+  col: number,
+): void;
 
 export function deleteColumn(
   state: EditorState,
