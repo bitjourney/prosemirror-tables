@@ -30,7 +30,6 @@
     "prosemirror-view": "^1.25.0"
   },
   "devDependencies": {
-    "@rollup/plugin-buble": "^0.20.0",
     "builddocs": "^1.0.3",
     "eslint": "^8.16.0",
     "eslint-plugin-jest": "^26.2.2",
