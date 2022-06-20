@@ -3,7 +3,11 @@ import commonJS from 'rollup-plugin-commonjs';
 
 export default {
   input: 'demo.js',
-  output: { format: 'iife', file: 'demo_bundle.js' },
+  output: {
+    format: 'iife',
+    file: 'demo_bundle.js',
+    generatedCode: 'es2015',
+  },
   plugins: [
     nodeResolve({
       main: true,
