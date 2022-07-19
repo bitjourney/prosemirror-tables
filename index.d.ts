@@ -52,26 +52,26 @@ export interface TableNodes {
 
 export function tableNodes(options: TableNodesOptions): TableNodes;
 
+export interface CellBookmark {
+  anchor: number;
+  head: number;
+  map(mapping: Mappable): CellBookmark;
+  resolve(doc: ProsemirrorNode): Selection;
+}
+
 export interface CellSelectionJSON {
   type: string;
   anchor: number;
   head: number;
 }
 
-export class CellSelection {
+export class CellSelection extends Selection {
   constructor($anchorCell: ResolvedPos, $headCell?: ResolvedPos);
 
-  from: number;
-  to: number;
-  $from: ResolvedPos;
-  $to: ResolvedPos;
-  anchor: number;
-  head: number;
   $anchor: ResolvedPos;
   $head: ResolvedPos;
   $anchorCell: ResolvedPos;
   $headCell: ResolvedPos;
-  empty: boolean;
   ranges: Array<SelectionRange>;
 
   map(doc: ProsemirrorNode, mapping: Mappable): any;
@@ -83,7 +83,7 @@ export class CellSelection {
   isColSelection(): boolean;
   eq(other: Selection): boolean;
   toJSON(): CellSelectionJSON;
-  getBookmark(): { anchor: number; head: number };
+  getBookmark(): CellBookmark;
 
   static colSelection(
     anchorCell: ResolvedPos,
@@ -190,6 +190,8 @@ export function mergeCells(
   dispatch?: (tr: Transaction) => void,
 ): boolean;
 
+export function removeRow(tr: Transaction, rect: TableRect, row: number): void;
+
 export function deleteRow(
   state: EditorState,
   dispatch?: (tr: Transaction) => void,
@@ -218,6 +220,12 @@ export function addRow(
   rect: TableRect,
   row: number,
 ): Transaction;
+
+export function removeColumn(
+  tr: Transaction,
+  rect: TableRect,
+  col: number,
+): void;
 
 export function deleteColumn(
   state: EditorState,
